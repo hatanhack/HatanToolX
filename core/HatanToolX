@@ -1,6 +1,6 @@
-# Tool Name :- Tool-X
-# Author :- Rajkumar dusad
-# Date :- 1/11/2017
+# Tool Name :- HatanToolX
+# Author :- hatanhack
+# Date :- 24/9/2025
 
 if [ -d /data/data/com.termux/files/usr/etc ]; then
   conf_dir="/data/data/com.termux/files/usr/etc"
@@ -11,8 +11,8 @@ elif [ -d /etc ]; then
 fi
 
 if [ -e /usr/lib/sudo ]; then
-	sudo python3 $conf_dir/Tool-X/Tool-X.py
+	sudo python3 $conf_dir/HatanToolX/HatanToolX.py
 else
-	python3 $conf_dir/Tool-X/Tool-X.py
+	python3 $conf_dir/HatanToolX/HatanToolX.py
 fi
 exit
