@@ -106,13 +106,13 @@ class main:
           os.system("clear")
           logo.updating()
           if system.sudo != None:
-            if os.path.exists(system.home+"/Tool-X"):
+            if os.path.exists(system.home+"/HatanToolX"):
               pass
             else:
-              os.system(system.sudo+" git clone https://github.com/Rajkumrdusad/Tool-X.git "+system.home+"/Tool-X")
-            if os.path.exists(system.home+"/Tool-X/install.aex"):
-              os.system("cd "+system.home+"/Tool-X && "+system.sudo+" sh install.aex")
-              if os.path.exists(system.bin+"/Tool-X") and os.path.exists(system.conf_dir+"/Tool-X"):
+              os.system(system.sudo+" git clone https://github.com/hatanhack/HatanToolX.git "+system.home+"/HatanToolX")
+            if os.path.exists(system.home+"/HatanToolX/install.aex"):
+              os.system("cd "+system.home+"/HatanToolX && "+system.sudo+" sh install.aex")
+              if os.path.exists(system.bin+"/HatanToolX") and os.path.exists(system.conf_dir+"/HatanToolX"):
                 os.system("clear")
                 logo.updated()
                 cmd=input("\033[1;36m ##> \033[00m")
@@ -125,13 +125,13 @@ class main:
               logo.update_error()
               cmd=input("\033[1;36m ##> \033[00m")
           else:
-            if os.path.exists(system.home+"/Tool-X"):
+            if os.path.exists(system.home+"/HatanToolX"):
               pass
             else:
-              os.system("git clone https://github.com/Rajkumrdusad/Tool-X.git "+system.home+"/Tool-X")
-            if os.path.exists(system.home+"/Tool-X/install.aex"):
-              os.system("cd "+system.home+"/Tool-X && sh install.aex")
-              if os.path.exists(system.bin+"/Tool-X") and os.path.exists(system.conf_dir+"/Tool-X"):
+              os.system("git clone https://github.com/hatanhack/HatanToolX.git "+system.home+"/HatanToolX")
+            if os.path.exists(system.home+"/HatanToolX/install.aex"):
+              os.system("cd "+system.home+"/HatanToolX && sh install.aex")
+              if os.path.exists(system.bin+"/HatanToolX") and os.path.exists(system.conf_dir+"/HatanToolX"):
                 os.system("clear")
                 logo.updated()
                 cmd=input("\033[1;36m ##> \033[00m")
@@ -184,20 +184,16 @@ class main:
       elif cmd == "4":
         self.about(self)
         break
-      elif cmd=="x" or cmd=="X" or cmd=="exit":
-        os.system("clear")
-        logo.exit()
-        break
-      elif cmd=="rm -t" or cmd=="rm -T" or cmd=="uninstall tool-x" or cmd=="unistall Tool-X":
+      elif cmd=="x" or cmd=="X" or cmd=="exit" or cmd=="uninstall" or cmd=="rm -t":
         system=sys()
         if system.sudo:
-          os.system(system.sudo+" rm -rf "+system.bin+"/Tool-X")
-          os.system(system.sudo+" rm -rf "+system.bin+"/toolx")
-          os.system(system.sudo+" rm -rf "+system.conf_dir+"/Tool-X")
+          os.system(system.sudo+" rm -rf "+system.bin+"/HatanToolX")
+          os.system(system.sudo+" rm -rf "+system.bin+"/hatantoolx")
+          os.system(system.sudo+" rm -rf "+system.conf_dir+"/HatanToolX")
         else:
-          os.system("rm -rf "+system.bin+"/Tool-X")
-          os.system("rm -rf "+system.bin+"/toolx")
-          os.system("rm -rf "+system.conf_dir+"/Tool-X")
+          os.system("rm -rf "+system.bin+"/HatanToolX")
+          os.system("rm -rf "+system.bin+"/hatantoolx")
+          os.system("rm -rf "+system.conf_dir+"/HatanToolX")
         os.system("clear")
         logo.exit()
         break
@@ -212,9 +208,9 @@ class tools:
   category_data=None
   def __init__(self):
     system=sys()
-    with open(system.conf_dir+"/Tool-X/core/data.json") as data_file:
+    with open(system.conf_dir+"/HatanToolX/core/data.json") as data_file:
       self.data=json.load(data_file)
-    with open(system.conf_dir+"/Tool-X/core/cat.json") as cat_file:
+    with open(system.conf_dir+"/HatanToolX/core/cat.json") as cat_file:
       self.category_data=json.load(cat_file)
     self.names=list(self.data.keys())
     self.category=list(self.category_data.keys())
