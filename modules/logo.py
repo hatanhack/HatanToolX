@@ -1,3 +1,10 @@
+import os
+import sys
+
+# Tool Name :- HatanToolX
+# Author :- hatanhack
+# Date :- 24/9/25
+
 class logo:
   @classmethod
   def tool_header(self):
@@ -16,52 +23,114 @@ class logo:
 \033[1;36m =============================================\033[00m''')
 
   @classmethod
-  def tool_footer(self):
-    print('''\033[1;36m_______________________________________________
-===============================================\033[00m''')
-
+  def installing(self):
+    os.system("clear")
+    self.tool_header()
+    print('''\033[1;32m
+      Installing ....\033[00m''')
 
   @classmethod
-  def not_ins(self):
+  def installed(self,name):
+    os.system("clear")
     self.tool_header()
-    print ('''
-\033[1;31m  [ + ]  \033[1;31mWe can't install HatanToolX.\033[1;m
-\033[1;31m  [ + ]  \033[1;31mThere are some error.\033[1;m
-\033[1;31m  [ + ]  \033[1;31mPlease try again after some time.\033[1;m''')
-    self.tool_footer()
+    print(f'''\033[1;32m
+      \033[1;33m{name}\033[1;32m Installed Successfully !!\007
+      Press Enter To Back...\007''')
 
   @classmethod
-  def ins_tnc(self):
+  def not_installed(self,name):
+    os.system("clear")
     self.tool_header()
-    print ('''
-\033[1;33m  [ + ] \033[1;32mUse It At Your Own Risk.
-\033[1;33m  [ + ] \033[1;32mNo Warranty.
-\033[1;33m  [ + ] \033[1;32mUse it legal purpose only.
-\033[1;33m  [ + ] \033[1;32mWe are not responsible for your actions.
-\033[1;33m  [ + ] \033[1;32mDo not do things that are forbidden.
-
-\033[1;31m If you are installing this tool.
- that means you are agree with all terms.''')
-    self.tool_footer()
+    print(f'''\033[1;31m
+      \033[1;33m{name}\033[1;31m Is Not Installed !!
+      Press Enter To Back...''')
 
   @classmethod
-  def ins_sc(self):
+  def already_installed(self,name):
+    os.system("clear")
     self.tool_header()
-    print ('''
-\033[1;33m    [ + ] \033[1;32mHatanToolX installed successfully.
-\033[1;33m    [ + ] \033[1;32mTo run HatanToolX.
-\033[1;33m    [ + ] \033[1;32mType hatantoolx in your terminal.''')
-    self.tool_footer()
+    print(f'''\033[1;33m
+      \033[1;32m{name}\033[1;33m Is Already Installed !!
+      Press Enter To Back...''')
+
+  @classmethod
+  def update_error(self):
+    os.system("clear")
+    self.tool_header()
+    print('''\033[1;31m
+      Sorry The Update Failed !!
+      Press Enter To Back...''')
+
+  @classmethod
+  def updated(self):
+    os.system("clear")
+    self.tool_header()
+    print('''\033[1;32m
+      Successfully Updated !!
+      Press Enter To Back...''')
+
+  @classmethod
+  def nonet(self):
+    os.system("clear")
+    self.tool_header()
+    print('''\033[1;31m
+      Sorry Check Your Internet Connection !!
+      Press Enter To Back...''')
+
+  @classmethod
+  def install_tools(self):
+    os.system("clear")
+    self.tool_header()
+    print('''\033[1;32m
+      [ + ] \033[1;33mAll Tools\033[1;32m''')
+
+  @classmethod
+  def back(self):
+    print('''\033[1;32m
+      [ \033[1;37m00 \033[1;32m] \033[1;33mBack\033[00m''')
 
   @classmethod
   def update(self):
+    os.system("clear")
     self.tool_header()
-    print ('''
-\033[1;33m  [ 1 ] \033[1;32mUpdate your HatanToolX.
-\033[1;33m  [ 0 ] \033[1;32mFor Back.\033[00m''')
-    self.tool_footer()
+    print('''\033[1;32m
+      [ \033[1;37m1 \033[1;32m] \033[1;33mUpdate HatanToolX
+      [ \033[1;37m0 \033[1;32m] \033[1;33mBack\033[00m''')
 
   @classmethod
-def exit(self):
-    print('''\033[1;31m
-\033[1;m''')
+  def updating(self):
+    os.system("clear")
+    self.tool_header()
+    print('''\033[1;32m
+      Updating ....\033[00m''')
+
+  @classmethod
+  def about(self,total):
+    os.system("clear")
+    self.tool_header()
+    print(f'''
+\033[1;33m  Author  : \033[1;36mhatanhack
+\033[1;33m  Github  : \033[1;36mhttps://github.com/hatanhack/HatanToolX
+\033[1;33m  Version : \033[1;36m2.1
+\033[1;33m  Tools   : \033[1;36m{total}\033[00m
+
+\033[1;32m[ \033[1;37m00 \033[1;32m] \033[1;33mBack\033[00m''')
+
+  @classmethod
+  def menu(self,total):
+    os.system("clear")
+    self.tool_header()
+    print(f'''
+\033[1;33m  [ \033[1;37m1 \033[1;33m] \033[1;32mShow all tools\033[0m
+\033[1;33m  [ \033[1;37m2 \033[1;33m] \033[1;32mTools Category\033[0m
+\033[1;33m  [ \033[1;37m3 \033[1;33m] \033[1;32mUpdate HatanToolX\033[0m
+\033[1;33m  [ \033[1;37m4 \033[1;33m] \033[1;32mAbout Us\033[0m
+\033[1;33m  [ \033[1;37mrm -t \033[1;33m] \033[1;32mUninstall HatanToolX\033[0m
+\033[1;33m  [ \033[1;37mx \033[1;33m] \033[1;31mFor Exit\033[0m''')
+
+  @classmethod
+  def exit(self):
+    os.system("clear")
+    self.tool_header()
+    print('''\033[1;32m
+      Thanks For Using !!\007''')
