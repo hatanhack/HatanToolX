@@ -31,11 +31,28 @@ HatanToolX works on any of the following operating systems:<br>
 ### How to Install
 
 Open the terminal and type following commands.
+(افتح الطرفية واكتب الأوامر التالية.)
 
 * `apt update`
+  (لتحديث قائمة الحزم في نظامك.)
 
 * `apt install git`
+  (لتثبيت أداة Git اللازمة لنسخ المشروع.)
 
 * `git clone https://github.com/hatanhack/HatanToolX.git`
+  (لنسخ ملفات أداة HatanToolX من GitHub إلى جهازك.)
 
 * `cd HatanToolX`
+  (للدخول إلى مجلد الأداة بعد نسخها.)
+
+* `mkdir -p /data/data/com.termux/files/usr/etc/HatanToolX`
+  (لإنشاء مجلد خاص بالأداة في مسار النظام.)
+
+* `cp -r core /data/data/com.termux/files/usr/etc/HatanToolX/`
+  (لنسخ مجلد الملفات الأساسية إلى مجلد النظام الذي تم إنشاؤه.)
+
+* `chmod +x HatanToolX.py`
+  (لمنح ملف الأداة الرئيسي صلاحية التشغيل.)
+
+* `ln -s ~/HatanToolX/HatanToolX.py /data/data/com.termux/files/usr/bin/hatantoolx`
+  (لإنشاء رابط تشغيلي يتيح لك تشغيل الأداة من أي مكان بكتابة `hatantoolx`.)
