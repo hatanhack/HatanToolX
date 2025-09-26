@@ -7,6 +7,7 @@ import sys
 try:
   import requests
 except:
+  # Install requests module if missing
   os.system("pip install requests")
   os.system("pip3 install requests")
 
@@ -19,7 +20,7 @@ class sys:
   conf_dir=None
   def __init__(self):
 
-    # checking for system root access
+    # checking for system root access (sudo)
     if os.path.exists("/usr/lib/sudo"):
       self.sudo="sudo"
     elif os.path.exists("/lib/sudo"):
@@ -33,15 +34,15 @@ class sys:
     elif os.path.exists("/sbin/sudo"):
       self.sudo="sudo"
 
-    # checking for configuration dir
-    if os.path.exists("/usr/etc"):
-      self.conf_dir="/usr/etc"
-    elif os.path.exists("/data/data/com.termux/files/usr/etc"):
+    # checking for configuration dir (THE FIX FOR TERMUX PATH PRIORITY)
+    if os.path.exists("/data/data/com.termux/files/usr/etc"): # 1. Check Termux path first
       self.conf_dir="/data/data/com.termux/files/usr/etc"
-    elif os.path.exists("/etc"):
+    elif os.path.exists("/etc"): # 2. Check generic Linux path
       self.conf_dir="/etc"
+    elif os.path.exists("/usr/etc"): # 3. Check other Linux paths
+      self.conf_dir="/usr/etc"
 
-    # checking for system bin dir and system package manager
+    # checking for system bin dir and system package manager (no changes needed)
     if os.path.exists("/usr/bin/yum"):
       self.sys="linux"
       self.bin="/usr/bin"
@@ -112,6 +113,7 @@ class sys:
       self.pac="apk"
 
   def connection(self):
+    # Check for internet connection
     try:
       if requests.get("https://www.google.com").ok:
         return True
