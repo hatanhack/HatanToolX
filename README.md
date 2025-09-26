@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/github/license/hatanhack/HatanToolX.svg)](https://github.com/hatanhack/HatanToolX)
 [![Rawsec's CyberSecurity Inventory](https://inventory.rawsec.ml/img/badges/Rawsec-inventoried-FF5050_flat.svg)](https://inventory.rawsec.ml/tools.html#HatanToolX)
 
-------------------------------------------------------------------------
+---
 
 ### Introduction
 
@@ -18,7 +18,7 @@ HatanToolX was developed for Termux and other android terminals. Using HatanTool
 <img width="38%" src="core/hatantoolx_cat.png"/>
 </p>
 
-------------------------------------------------------------------------
+---
 
 ### Operating System Requirements
 
@@ -26,33 +26,33 @@ HatanToolX works on any of the following operating systems:<br>
 • **Android** (Using the Termux App) <br>
 • **Linux** (Debian Based Systems) <br>
 
-------------------------------------------------------------------------
+---
 
 ### How to Install
 
 Open the terminal and type following commands.
 (افتح الطرفية واكتب الأوامر التالية.)
 
-* `apt update`
+* **`apt update`**
   (لتحديث قائمة الحزم في نظامك.)
 
-* `apt install git`
+* **`apt install git`**
   (لتثبيت أداة Git اللازمة لنسخ المشروع.)
 
-* `git clone https://github.com/hatanhack/HatanToolX.git`
+* **`git clone https://github.com/hatanhack/HatanToolX.git`**
   (لنسخ ملفات أداة HatanToolX من GitHub إلى جهازك.)
 
-* `cd HatanToolX`
+* **`cd HatanToolX`**
   (للدخول إلى مجلد الأداة بعد نسخها.)
 
-* `mkdir -p /data/data/com.termux/files/usr/etc/HatanToolX`
-  (لإنشاء مجلد خاص بالأداة في مسار النظام.)
+* **`python3 install.py`**
+  **(لتشغيل سكريبت التثبيت. هذا السكريبت سيقوم بإنشاء المجلدات ونسخ الملفات وتجهيز الأداة بشكل كامل.)**
 
-* `cp -r core /data/data/com.termux/files/usr/etc/HatanToolX/`
-  (لنسخ مجلد الملفات الأساسية إلى مجلد النظام الذي تم إنشاؤه.)
+---
 
-* `chmod +x HatanToolX.py`
-  (لمنح ملف الأداة الرئيسي صلاحية التشغيل.)
+### تشغيل الأداة (Running the Tool)
 
-* `ln -s ~/HatanToolX/HatanToolX.py /data/data/com.termux/files/usr/bin/hatantoolx`
-  (لإنشاء رابط تشغيلي يتيح لك تشغيل الأداة من أي مكان بكتابة `hatantoolx`.)
+بعد اكتمال التثبيت بنجاح، يمكنك تشغيل الأداة من أي مكان بكتابة اسمها المختصر:
+
+* **`hatantoolx`**
+  (لتشغيل الأداة مباشرة.)
