@@ -1,80 +1,54 @@
-# Tool Name :- HatanToolX
-# Author :- hatanhack
-# Date :- 24/9/2025
+cd ~/HatanToolX
 
-if [ -e  /usr/lib/sudo ];then
-  if [ -e /usr/bin/apt-get ];then
-    if [ ! -e /usr/bin/python3 ];then
-       sudo apt-get update
-       sudo apt-get upgrade -y
-       sudo apt-get install python -y
-       sudo apt-get install python3 -y
-     fi
-  fi
-else
-  if [ -d /usr/bin ];then
-    if [ -e /usr/bin/apt-get ];then
-      if [ ! -e /usr/bin/python3 ];then
-       apt-get update
-       apt -get upgrade -y
-       apt-get install python -y
-       apt-get install python3 -y
-      fi
-    fi
-  fi
-fi
+# backup original just in case
+cp install.aex install.aex.bak 2>/dev/null || true
+
+# write English-safe Termux installer
+cat > install.aex <<'SH'
+#!/data/data/com.termux/files/usr/bin/env bash
+set -e
+
+echo "[*] HatanToolX Termux installer (English)"
+
+# Only run this on Termux
 if [ -d /data/data/com.termux/files/usr/bin ]; then
-  if [ ! -e /data/data/com.termux/files/usr/bin/python3 ];then
-    pkg update
-    pkg upgrade -y
-    pkg install python -y
-    pkg install python3 -y
+
+  # install python3 if missing
+  if [ ! -x /data/data/com.termux/files/usr/bin/python3 ]; then
+    echo "[*] Updating package lists and installing python3..."
+    pkg update -y || true
+    pkg upgrade -y || true
+    pkg install -y python
+    pkg install -y python3
+  else
+    echo "[*] python3 already installed."
   fi
-fi
-if [ -e  /usr/lib/sudo ];then
-  if [ -e /usr/bin/yum ];then
-    if [ ! -e /usr/bin/python3 ];then
-       sudo yum update
-       sudo yum upgrade -y
-       sudo yum install python -y
-       sudo yum install python3 -y
-     fi
+
+  # ensure script runs from project root
+  cd "$(dirname "$0")" || { echo "[!] Failed to cd to project directory."; exit 1; }
+
+  # ensure core JSON files exist
+  mkdir -p core
+  [ -f core/data.json ] || echo '{}' > core/data.json
+  [ -f core/cat.json ]  || echo '{}' > core/cat.json
+
+  # run python installer if present
+  if [ -f "install.py" ]; then
+    echo "[*] Running Python installer (install.py)..."
+    python3 install.py
+    echo "[+] install.py finished."
+  else
+    echo "[!] install.py not found. Please check the repository contents."
+    exit 1
   fi
+
+  echo "[+] Installation script completed. You can run the tool with: hatan or python3 ~/HatanToolX/HatanToolX.py"
 else
-  if [ -d /usr/bin ];then
-    if [ -e /usr/bin/yum ];then
-      if [ ! -e /usr/bin/python3 ];then
-       yum update
-       yum upgrade -y
-       yum install python -y
-       yum install python3 -y
-      fi
-    fi
-  fi
+  echo "[!] This installer is intended for Termux. For Linux desktop, follow the project's README."
+  exit 1
 fi
-if [ -e  /usr/bin/brew ];then
-  if [ ! -e /usr/bin/python3 ];then
-     brew install python -y
-     brew install python3 -y
-   fi
-fi
-if [ -e  /usr/bin/brew ];then
-  if [ ! -e /usr/bin/python ];then
-     brew install python -y
-     brew install python3 -y
-   fi
-fi
-if [ -e  /usr/bin/apk ];then
-  if [ ! -e /usr/bin/python ];then
-     apk install python -y
-     apk install python3 -y
-   fi
-fi
-if [ -e  /usr/bin/apk ];then
-  if [ ! -e /usr/bin/python3 ];then
-     apk install python -y
-     apk install python3 -y
-   fi
-fi
-python3 install.py
-exit
+SH
+
+# make executable and run it
+chmod +x install.aex
+./install.aex
