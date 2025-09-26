@@ -27,32 +27,46 @@ HatanToolX works on any of the following operating systems:<br>
 • **Linux** (Debian Based Systems) <br>
 
 ------------------------------------------------------------------------
+1. تحديث النظام وتثبيت git و python3
 
-### How to Install
 
-Open the terminal and type following commands.
-(افتح الطرفية واكتب الأوامر التالية.)
 
-* `apt update`
-  (لتحديث قائمة الحزم في نظامك.)
+pkg update -y
+pkg upgrade -y
+pkg install -y git python python3
 
-* `apt install git`
-  (لتثبيت أداة Git اللازمة لنسخ المشروع.)
+2. تحميل المستودع من GitHub
 
-* `git clone https://github.com/hatanhack/HatanToolX.git`
-  (لنسخ ملفات أداة HatanToolX من GitHub إلى جهازك.)
 
-* `cd HatanToolX`
-  (للدخول إلى مجلد الأداة بعد نسخها.)
 
-* `mkdir -p /data/data/com.termux/files/usr/etc/HatanToolX`
-  (لإنشاء مجلد خاص بالأداة في مسار النظام.)
+cd ~
+git clone https://github.com/hatanhack/HatanToolX.git
+cd HatanToolX
 
-* `cp -r core /data/data/com.termux/files/usr/etc/HatanToolX/`
-  (لنسخ مجلد الملفات الأساسية إلى مجلد النظام الذي تم إنشاؤه.)
+3. تثبيت HatanToolX عبر سكربت بايثون
 
-* `chmod +x HatanToolX.py`
-  (لمنح ملف الأداة الرئيسي صلاحية التشغيل.)
 
-* `ln -s ~/HatanToolX/HatanToolX.py /data/data/com.termux/files/usr/bin/hatantoolx`
+
+python3 install.py
+
+سيقوم هذا بإنشاء مجلدات core و modules في /data/data/com.termux/files/usr/etc/HatanToolX
+
+سيقوم بإنشاء wrapper باسم hatan في /data/data/com.termux/files/usr/bin
+
+
+4. تشغيل الأداة بعد التثبيت
+
+
+
+عبر الاختصار:
+
+
+hatan
+
+أو مباشرة عبر بايثون:
+
+
+python3 ~/HatanToolX/HatanToolX.py
+
+
   (لإنشاء رابط تشغيلي يتيح لك تشغيل الأداة من أي مكان بكتابة `hatantoolx`.)
